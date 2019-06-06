@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <!-- Breadcrumb -->
+    <section id="bc" class="mt-3">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{% url 'index' %}">
+                        Home
+                    </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="/board/{{ thread.board }}/">
+                        {{ thread.board }}
+                    </a>
+                </li>
+                <li class="breadcrumb-item text-dark">
+                    {{ thread.title }}
+                </li>
+            </ol>
+    </section>
+
+    {% if thread.posts %}
+        {% for post in thread.posts %}
+            <div class="card" style="padding: 1rem;">
+                <p style="text-align: left;">
+                    <u>{{ post.author }}</u>
+                    <span style="float: right;">
+                        {{ post.date_published }}
+                    </span>
+                </p>
+                <h4 class="card-content">{{ post.content }}</h4>
+            </div>
+        {% endfor %}
+    {% else %}
+        <h4>There are no posts in this thread yet.</h4>
+    {% endif %}
+{% endblock %}

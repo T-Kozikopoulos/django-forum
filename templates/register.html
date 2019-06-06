@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button style="background-color:#0d75d8; color:white" class="btn btn-outline-info" type="submit">
+            Sign Up
+        </button>
+    </form>
+
+    If you already have an account <a href="{% url 'login' %}" target="blank"><strong>login</strong></a> instead.
+{% endblock %}

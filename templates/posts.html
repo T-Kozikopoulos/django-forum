@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for post in thread.posts %}
+        <div class="card">
+            <u><small>{{ post.author }}</small></u>
+            <h4 class="card-content">{{ post.content }}</h4>
+            <small style="text-align: right;">{{ post.date_published }}</small>
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,23 @@
+<nav class="grey darken-3">
+    <div class="nav-wrapper container">
+        <a href="/" class="brand-logo left text-white" style="text-decoration: none; !important">Boards</a>
+        <ul id="nav-mobile" class="right">
+            {% if user.is_authenticated %}
+                {% if request.user.is_active and request.user.is_staff %}
+                    <li class="nav-item mr-3">
+                        <a class="text-white" href="{% url 'topic_create' %}" style="text-decoration: none; !important">Create Topic</a>
+                    </li>
+                {% endif %}
+                <li class="nav-item mr-3">
+                    <a class="text-white" href="{% url 'post_create' %}" style="text-decoration: none; !important">Create Post</a>
+                </li>
+                <li class="nav-item mr-3">
+                    <a class="text-white" href="{% url 'logout' %}" style="text-decoration: none; !important">Logout</a>
+                </li>
+            {% else %}
+                <li><a class="text-white" href="{% url 'login' %}" style="text-decoration: none; !important">Login</a></li>
+                <li><a class="text-white" href="{% url 'register' %}" style="text-decoration: none; !important">Register</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>

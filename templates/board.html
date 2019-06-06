@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <!-- Breadcrumb -->
+    <section id="bc" class="mt-3">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{% url 'index' %}">
+                        Home
+                    </a>
+                </li>
+                <li class="breadcrumb-item text-dark">
+                    {{ board }}
+                </li>
+            </ol>
+    </section>
+
+    <table class="table">
+        <thead class="thead-inverse">
+        <tr>
+            <th>Topic</th>
+            <th>Posts</th>
+            <th>Created</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if board.threads %}
+            {% for thread in board.threads %}
+                <tr>
+                    <td>
+                        <a href="/topic/{{ thread }}/">{{ thread.title }}</a>
+                    </td>
+                    <td class="align-middle">{{ thread.post_count }}</td>
+                    <td class="align-middle">{{ thread.date_published }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>There doesn't seem to be anything here yet.</td>
+            </tr>
+        {% endif %}
+        </tbody>
+    </table>
+{% endblock %}
